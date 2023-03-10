@@ -1,9 +1,9 @@
-package com.shaoyl1024.componentsExplored.nacos203;
+package com.shaoyl1024.springboot.nacos203;
 
 import com.alibaba.cloud.nacos.NacosConfigManager;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
-import com.shaoyl1024.componentsExplored.nacos203.config.NacosDataTypeConfig;
+import com.shaoyl1024.springboot.nacos203.config.NacosDataTypeConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
