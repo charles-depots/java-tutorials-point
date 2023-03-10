@@ -1,4 +1,4 @@
-package com.shaoyl1024.springboot.nacos203.config;
+package com.shaoyl1024.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,7 +12,7 @@ import java.util.Map;
 @RefreshScope
 @Configuration
 @ConfigurationProperties(prefix = "nacos")
-public class NacosDataTypeConfig {
+public class NacosConfig {
     private String blackIpStr;
     private List<String> blackIpList;
     private Map<String, String> blackIpMap;

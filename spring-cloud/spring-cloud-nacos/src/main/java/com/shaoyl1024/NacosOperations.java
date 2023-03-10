@@ -1,9 +1,9 @@
-package com.shaoyl1024.springboot.nacos203;
+package com.shaoyl1024;
 
 import com.alibaba.cloud.nacos.NacosConfigManager;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
-import com.shaoyl1024.springboot.nacos203.config.NacosDataTypeConfig;
+import com.shaoyl1024.config.NacosConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,15 +11,14 @@ import javax.annotation.PostConstruct;
 
 /**
  * @author charles.shao
- * @description Nacos 基本操作
- * @date 2023/3/4
+ * @description Nacos common operations
+ * @date 2023/3/10
  **/
 @RestController
-@RequestMapping("/nacos")
-public class NacosConfigPrintController {
+public class NacosOperations {
 
     @Autowired
-    private NacosDataTypeConfig nacosDataTypeConfig;
+    private NacosConfig nacosConfig;
 
     @Autowired
     private NacosConfigManager nacosConfigManager;
@@ -32,13 +31,13 @@ public class NacosConfigPrintController {
     }
 
     /**
-     * 打印基本数据类型 - list
+     * 打印配置数据
      *
      * @return
      */
     @RequestMapping("/print/list")
     public String printList() {
-        return nacosDataTypeConfig.getBlackIpList().toString();
+        return nacosConfig.getBlackIpList().toString();
     }
 
     /**
@@ -47,8 +46,6 @@ public class NacosConfigPrintController {
      * @param dataId  配置 ID
      * @param group   配置分组
      * @param content 配置内容
-     * @return
-     * @throws NacosException
      */
     @PostMapping("/publishConfig")
     public Boolean publishConfig(@RequestParam(value = "dataId") String dataId,
@@ -63,13 +60,10 @@ public class NacosConfigPrintController {
      *
      * @param dataId 配置 ID
      * @param group  配置分组
-     * @return
-     * @throws NacosException
      */
     @GetMapping("/getConfig")
     public String syncNacosConfig(@RequestParam(value = "dataId") String dataId,
                                   @RequestParam(value = "group") String group) throws NacosException {
         return configService.getConfig(dataId, group, 1000);
     }
-
 }
