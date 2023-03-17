@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /nacos
+  undertow:
+    io-threads: 16
+    worker-threads: 256
+    buffer-size: 1024
+    direct-buffers: true
+
+# Kafka Properties
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: 127.0.0.1:9092
+      group-id: group-id
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      default-topic: reflector-user
+    topicList:
+      topic-1: reflector-1
+
